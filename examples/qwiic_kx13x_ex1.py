@@ -47,8 +47,8 @@ import sys
 def runExample():
 
     print("\nSparkFun KX13X Accelerometer Example 1\n")
-    # myKx = qwiic_kx13x.QwiicKX134() # If using the KX134 un-comment this line and replace other instances of "kx132" with "kx134"
-    myKx = qwiic_kx13x.QwiicKX132()
+    myKx = qwiic_kx13x.QwiicKX134() # If using the KX134 un-comment this line and replace other instances of "kx132" with "kx134"
+    # myKx = qwiic_kx13x.QwiicKX132()
 
     if myKx.connected == False:
             print("The Qwiic KX13X Accelerometer device isn't connected to the system. Please check your connection", \
@@ -61,15 +61,15 @@ def runExample():
         print("Make sure you're using the KX132 and not the KX134")
 
     # myKx.set_range(myKx.KX132_RANGE8G) # Update the range of the data output.
-    myKx.initialize(myKx.BASIC_SETTINGS) # Load basic settings 
+    myKx.initialize(myKx.DEFAULT_SETTINGS) # Load basic settings 
 
     while True:
             
         myKx.get_accel_data()
-        print("X: {0}g Y: {1}g Z: {2}g".format(myKx.kx132_accel.x,
-                                               myKx.kx132_accel.y,
-                                               myKx.kx132_accel.z))
-        time.sleep(.02) #Set delay to 1/Output Data Rate which is by default 50Hz 1/50 = .02
+        print("X: {0:.2f}g Y: {1:.2f}g Z: {2:.2f}g".format(myKx.kx134_accel.x,
+                                               myKx.kx134_accel.y,
+                                               myKx.kx134_accel.z))
+        time.sleep(.5) #Set delay to 1/Output Data Rate which is by default 50Hz 1/50 = .02
 
 
 if __name__ == '__main__':
